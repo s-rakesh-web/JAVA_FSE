@@ -4,6 +4,10 @@ interface PaymentProcessor{
 
 class Gpay{
     public double MakePayment(double amount) {
+        /*
+        * This method name does not match with the interface method so we can't implement it so we need an
+        * adapter for this usage.
+        * */
         return amount;
     }
 }
