@@ -2,23 +2,27 @@ class Computer{
     private String CPU;
     private String RAM;
     private String Storage;
+    private String GraphicCard;
 
-    private Computer(String CPU,String RAM,String Storage){
+    private Computer(String CPU,String RAM,String Storage,String GraphicCard){
         this.CPU=CPU;
         this.RAM=RAM;
         this.Storage=Storage;
+        this.GraphicCard=GraphicCard;
     }
 
     public String toString(){
         return "CPU:"+this.CPU+"\n"
-                +"RAM:"+this.RAM+"\n"+
-                "Storage:"+this.Storage;
+                +"RAM Enabled:"+this.RAM+"\n"+
+                "Storage Enabled:"+this.Storage+
+                "\n"+"GraphicCard Enabled:"+this.GraphicCard;
     }
 
     public static class ComputerBuilder{
         private String CPU;
         private String RAM;
         private String Storage;
+        private String GraphicCard;
 
         public ComputerBuilder(String CPU){
             this.CPU=CPU;
@@ -34,7 +38,7 @@ class Computer{
         }
 
         public Computer build(){
-            return new Computer(CPU,RAM,Storage);
+            return new Computer(CPU,RAM,Storage,GraphicCard);
         }
         
     }
