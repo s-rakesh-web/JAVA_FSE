@@ -76,9 +76,9 @@ public class CommandPatternExample {
 
         RemoteControl remote=new RemoteControl();
         remote.setCommant(new lightOnCommand(light));
-        remote.pressUndo();
-        remote.pressUndo();
         remote.pressButton();
-        remote.pressButton();
+        remote.pressUndo();
+//        remote.setCommant(new lightOffCommand(light));
+//        remote.pressButton();
     }
 }
