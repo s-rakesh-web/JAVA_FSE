@@ -1,59 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 class Product{
     int productId;
     String productName;
     int quantity;
     double price;
-
-    List<Product> prod=new ArrayList<>();
-    Scanner sc=new Scanner(System.in);
-    public Product(){}
+    //public Product(){}
     public Product(int productId,String productName,int quantity,double price) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;
-    }
-    public void updateById(int id){
-
-        for(Product p:prod) {
-            if(p.productId==id) {
-
-                System.out.println("What to update?");
-                System.out.println("1.Name\n" +
-                        "2.quantity\n" +
-                        "3.price");
-                int n = sc.nextInt();
-                if (n == 1) {
-                    p.productName = sc.next();
-                } else if (n == 2) {
-                    p.quantity = sc.nextInt();
-                } else if (n == 3) {
-                    p.price = sc.nextDouble();
-                } else {
-                    System.out.println("Doesn't exist");
-                }
-            }else{
-                continue;
-            }
-        }
-
-
-    };
-    public void addProduct(int productId,String productName,int quantity,double price){
-
-        prod.add(new Product(productId,productName,quantity,price));
-    };
-
-    public void deleteProductById(int id){
-        for(Product p:prod){
-            if(p.productId==id)
-                prod.remove(p);
-            else continue;
-        }
     }
 
 
@@ -66,24 +24,92 @@ class Product{
                 this.quantity+
                 "\nPrice:"+this.price;
     }
+
+}
+
+class Inventory{
+    private List<Product> prod = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
+
+    public void addProduct(Product product) {
+        prod.add(product);
+        System.out.println("Product added successfully.");
+    }
+
+    public void updateById(int id) {
+        for (Product p : prod) {
+            if (p.productId == id) {
+                System.out.println("What do you want to update?");
+                System.out.println("1. Name");
+                System.out.println("2. Quantity");
+                System.out.println("3. Price");
+
+                int choice = sc.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter new product name: ");
+                        p.productName = sc.next();
+                        break;
+
+                    case 2:
+                        System.out.print("Enter new quantity: ");
+                        p.quantity = sc.nextInt();
+                        break;
+
+                    case 3:
+                        System.out.print("Enter new price: ");
+                        p.price = sc.nextDouble();
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice.");
+                }
+                return;
+            }
+        }
+        System.out.println("Product not found.");
+    }
+
+    public void deleteProductById(int id) {
+        boolean removed = prod.removeIf(p -> p.productId == id);
+
+        if (removed) {
+            System.out.println("Product deleted successfully.");
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
     public void display() {
+        if (prod.isEmpty()) {
+            System.out.println("Inventory is empty.");
+            return;
+        }
+
         for (Product p : prod) {
             System.out.println(p);
         }
     }
-
 }
+
 
 public class InventoryManagementSystem {
     public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        Product p=new Product();
-        p.addProduct(1,"Biscuit",20,10.0);
-        p.addProduct(2,"juice",20,10.0);
+        //Scanner sc=new Scanner(System.in);
+        Inventory inventory = new Inventory();
 
-        p.updateById(2);
-        p.deleteProductById(1);
-        p.display();
+        inventory.addProduct(new Product(1, "Biscuit", 20, 10.0));
+        inventory.addProduct(new Product(2, "Juice", 15, 25.0));
+
+        inventory.display();
+
+        inventory.updateById(2);
+
+        inventory.deleteProductById(1);
+
+        System.out.println("\nUpdated Inventory:");
+        inventory.display();
 
 
     }
