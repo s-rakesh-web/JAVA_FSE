@@ -1,3 +1,5 @@
+package JAVA;
+
 class Student{
     private String name;
     private int Id;

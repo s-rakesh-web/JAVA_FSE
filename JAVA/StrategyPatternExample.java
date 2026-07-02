@@ -1,3 +1,5 @@
+package JAVA;
+
 interface PaymentStrategy{
     void pay(double amount);
 }

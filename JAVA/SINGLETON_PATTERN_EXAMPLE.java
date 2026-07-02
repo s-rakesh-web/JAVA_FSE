@@ -1,3 +1,5 @@
+package JAVA;
+
 class logger{
 
     private static logger instance=new logger();

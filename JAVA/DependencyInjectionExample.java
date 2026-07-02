@@ -1,3 +1,5 @@
+package JAVA;
+
 interface CustomerRepository{
      void findCustomerById(int id);
 }

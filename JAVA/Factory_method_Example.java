@@ -1,3 +1,5 @@
+package JAVA;
+
 interface Document{
     String Open();
 }

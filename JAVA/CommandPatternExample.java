@@ -1,4 +1,4 @@
-import java.rmi.Remote;
+package JAVA;
 
 interface command{
     void execute();

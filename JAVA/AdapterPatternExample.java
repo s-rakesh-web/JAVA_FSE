@@ -1,3 +1,5 @@
+package JAVA;
+
 interface PaymentProcessor{
     double ProcessPayment(double amount);
 }

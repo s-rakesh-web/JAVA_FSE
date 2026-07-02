@@ -1,3 +1,5 @@
+package JAVA;
+
 class Computer{
     private String CPU;
     private String RAM;

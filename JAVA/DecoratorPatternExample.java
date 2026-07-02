@@ -1,3 +1,5 @@
+package JAVA;
+
 interface Notifier{
     String getDescription();
     String send(String message);
